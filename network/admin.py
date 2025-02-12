@@ -8,7 +8,7 @@ from network.models import NetworkElement, Product
 @admin.register(NetworkElement)
 class NetworkElementAdmin(admin.ModelAdmin):
     list_display = ('name', 'city', 'supplier',
-                    'debt_to_supplier', 'created_ad')
+                    'debt_to_supplier', 'created_at')
     search_fields = ['name']
     list_filter = ['city']
     actions = ['clear_debts']
@@ -26,5 +26,5 @@ class NetworkElementAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('element', 'name', 'model', 'releasw_date')
+    list_display = ('element', 'name', 'model', 'release_date')
     list_filter = ['element__country']

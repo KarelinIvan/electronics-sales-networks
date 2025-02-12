@@ -11,31 +11,35 @@ class NetworkElement(models.Model):
 
     NULLABLE = {'blank': True, 'null': True}
 
-    name = models.CharField(max_length=255, verbose_name='Наименование'),
-    email = models.EmailField(verbose_name='Email'),
-    country = models.CharField(max_length=100, verbose_name='Страна'),
-    city = models.CharField(max_length=100, verbose_name='Город'),
-    street = models.CharField(max_length=255, verbose_name='улица'),
-    house_number = models.CharField(max_length=10, verbose_name='Номер дома'),
+    name = models.CharField(max_length=255, verbose_name='Наименование')
+    email = models.EmailField(verbose_name='Email')
+    country = models.CharField(
+        max_length=100, verbose_name='Страна')
+    city = models.CharField(max_length=100, verbose_name='Город')
+    street = models.CharField(max_length=255, verbose_name='улица')
+    house_number = models.CharField(max_length=10, verbose_name='Номер дома')
     supplier = models.ForeignKey('self', on_delete=models.SET_NULL,
-                                 **NULLABLE, related_name='customers', verbose_name='Поставщик'),
+                                 **NULLABLE, related_name='customers', verbose_name='Поставщик')
     debt_to_supplier = models.DecimalField(
-        max_digits=12, decimal_places=2, verbose_name='Задолженность перед поставщиком'),
-    created_ad = models.DateTimeField(
-        auto_now_add=True, verbose_name='Дата создания'),
+        max_digits=12, decimal_places=2, verbose_name='Задолженность перед поставщиком')
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='Дата создания')
 
     class Meta:
         verbose_name = 'Элемент сети'
         verbose_name_plural = 'Элементы сети'
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     """ Модель продукта"""
     element = models.ForeignKey(
-        NetworkElement, on_delete=models.CASCADE, related_name='products'),
-    name = models.CharField(max_length=255, verbose_name='Наименование'),
-    model = models.CharField(max_length=50, verbose_name='Модель'),
-    releasw_date = models.DateField(
+        NetworkElement, on_delete=models.CASCADE, related_name='products')
+    name = models.CharField(max_length=255, verbose_name='Наименование')
+    model = models.CharField(max_length=50, verbose_name='Модель')
+    release_date = models.DateField(
         verbose_name='Дата выхода продукта на рынок')
 
     class Meta:
