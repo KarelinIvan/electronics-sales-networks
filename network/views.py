@@ -1,4 +1,5 @@
-from rest_framework import viewsets, permissions, PermissionDenied
+from rest_framework import viewsets, permissions
+from rest_framework.exceptions import PermissionDenied
 
 from network.models import NetworkElement, Product
 from network.serializers import NetworkElementSerializer, ProductSerializer
