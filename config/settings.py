@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'network',
+    'users',
 ]
 
 REST_FRAMEWORK = {

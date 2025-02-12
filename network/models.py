@@ -16,7 +16,7 @@ class NetworkElement(models.Model):
     country = models.CharField(
         max_length=100, verbose_name='Страна')
     city = models.CharField(max_length=100, verbose_name='Город')
-    street = models.CharField(max_length=255, verbose_name='улица')
+    street = models.CharField(max_length=255, verbose_name='Улица')
     house_number = models.CharField(max_length=10, verbose_name='Номер дома')
     supplier = models.ForeignKey('self', on_delete=models.SET_NULL,
                                  **NULLABLE, related_name='customers', verbose_name='Поставщик')
@@ -37,7 +37,7 @@ class Product(models.Model):
     """ Модель продукта"""
     element = models.ForeignKey(
         NetworkElement, on_delete=models.CASCADE, related_name='products')
-    name = models.CharField(max_length=255, verbose_name='Наименование')
+    name = models.CharField(max_length=255, verbose_name='Наименование продукта')
     model = models.CharField(max_length=50, verbose_name='Модель')
     release_date = models.DateField(
         verbose_name='Дата выхода продукта на рынок')
