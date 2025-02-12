@@ -8,6 +8,6 @@ from users.models import User
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     """ Панель администратора """
-    list_display = ('username', 'email', 'is_staff', 'created_at')
+    list_display = ('username', 'email', 'is_staff', 'date_joined')
     search_fields = ['username', 'email']
-    list_filter = ['is_staff', 'created_at']
+    list_filter = ['is_staff', 'date_joined']
